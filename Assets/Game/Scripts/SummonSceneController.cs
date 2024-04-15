@@ -63,6 +63,8 @@ public class SummonSceneController : MonoBehaviour
             }
         }
 
+        // selectedMonster = _availableMonsters[3];
+
         _ingredientsPanelController.DepleteSelectedIngredients();
 
         if (selectedMonster != null)

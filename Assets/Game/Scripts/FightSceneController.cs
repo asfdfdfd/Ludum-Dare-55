@@ -52,6 +52,9 @@ public class FightSceneController : MonoBehaviour
     [SerializeField]
     private GameObject monsterSpawnPoint;
 
+    [SerializeField]
+    private Jukebox jukebox;
+
     private readonly List<GameObject> _fightControlButtonsGameObjectsList = new();
 
     private List<Button> _fightControlButtonsList = new();
@@ -185,6 +188,8 @@ public class FightSceneController : MonoBehaviour
     private void MoveToSummonScene()
     {
         _isFightReallyStarted = false;
+
+        jukebox.PlaySummonMusic();
 
         gameObjectFight.SetActive(false);
         gameObjectSummon.SetActive(true);

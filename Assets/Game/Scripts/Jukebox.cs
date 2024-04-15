@@ -16,4 +16,10 @@ public class Jukebox : MonoBehaviour
         _musicSummon.DOFade(0.0f, 0.5f);
         _musicFight.DOFade(1.0f, 0.5f);
     }
+
+    public void PlaySummonMusic()
+    {
+        _musicSummon.DOFade(1.0f, 0.5f);
+        _musicFight.DOFade(0.0f, 0.5f);
+    }    
 }
