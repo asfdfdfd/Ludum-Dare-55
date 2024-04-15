@@ -15,7 +15,7 @@ MonoBehaviour:
   id: SlimeMonster
   health: 3
   damage: 1
-  prefab: {fileID: 2218409967912196427, guid: e1e91fb19c26b43c59a05095eeed3110, type: 3}
+  prefab: {fileID: 3695324431331060042, guid: 55301d25823024ebfbfe6ed73ba8065e, type: 3}
   itemsRequired:
   - {fileID: 11400000, guid: 1a37ee91abe48466b9c85a1e25d0ce4b, type: 2}
   itemsProduced:
