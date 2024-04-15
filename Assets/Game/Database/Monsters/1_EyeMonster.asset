@@ -19,7 +19,7 @@ MonoBehaviour:
   itemsRequired:
   - {fileID: 11400000, guid: feddcbc701a684f7fade6ef787d60c03, type: 2}
   itemsProduced:
-  - {fileID: 11400000, guid: 1a37ee91abe48466b9c85a1e25d0ce4b, type: 2}
+  - {fileID: 11400000, guid: 0418140d4b06c4cd1bea097bf6e3b771, type: 2}
   dialogsBeforeFight:
   - Test dialog before fight
   dialogsAfterFight:

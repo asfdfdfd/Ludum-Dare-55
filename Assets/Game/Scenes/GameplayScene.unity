@@ -328,11 +328,10 @@ MonoBehaviour:
   gameObjectFight: {fileID: 1914391442}
   _availableMonsters:
   - {fileID: 11400000, guid: 3a5484ba87f5d4dad961e925ac1833d5, type: 2}
-  - {fileID: 11400000, guid: 6128dd4dd04d54cd9a21b2cc788b7f4f, type: 2}
   - {fileID: 11400000, guid: 0595b26604a5d4c63a86e17b3ec2cb94, type: 2}
   - {fileID: 11400000, guid: d7c54345fc76843f3babe39ba957f56c, type: 2}
   - {fileID: 11400000, guid: b3b3af7011648406998fc65e6bde5691, type: 2}
-  - {fileID: 11400000, guid: 14dcde19aaee44512bbf068afcd6c8c3, type: 2}
+  - {fileID: 11400000, guid: 6128dd4dd04d54cd9a21b2cc788b7f4f, type: 2}
   _ingredientsPanelController: {fileID: 1420404945}
   onMonsterSummoned:
     m_PersistentCalls:
@@ -1680,7 +1679,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0595b26604a5d4c63a86e17b3ec2cb94, type: 2}
   - {fileID: 11400000, guid: d7c54345fc76843f3babe39ba957f56c, type: 2}
   - {fileID: 11400000, guid: b3b3af7011648406998fc65e6bde5691, type: 2}
-  - {fileID: 11400000, guid: 14dcde19aaee44512bbf068afcd6c8c3, type: 2}
 --- !u!4 &400826758
 Transform:
   m_ObjectHideFlags: 0
@@ -3465,22 +3463,22 @@ PrefabInstance:
     - target: {fileID: 8258405043519051297, guid: 7994d35b6592044b78c0c08005c390d7,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8258405043519051297, guid: 7994d35b6592044b78c0c08005c390d7,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8258405043519051297, guid: 7994d35b6592044b78c0c08005c390d7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 8258405043519051297, guid: 7994d35b6592044b78c0c08005c390d7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -33.499146
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5536,22 +5534,22 @@ PrefabInstance:
     - target: {fileID: 8258405043519051297, guid: 7994d35b6592044b78c0c08005c390d7,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8258405043519051297, guid: 7994d35b6592044b78c0c08005c390d7,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8258405043519051297, guid: 7994d35b6592044b78c0c08005c390d7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 8258405043519051297, guid: 7994d35b6592044b78c0c08005c390d7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -33.499146
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5851,7 +5849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1914391444
 MonoBehaviour:
   m_ObjectHideFlags: 0

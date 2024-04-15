@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80dead697cdf44941a89d160fa662f7d, type: 3}
-  m_Name: 3_VolkMonster
+  m_Name: 5_SlimeMonster
   m_EditorClassIdentifier: 
-  id: VolkMonster
-  health: 6
-  damage: 2
-  prefab: {fileID: 1914876643847328865, guid: c22743a6ec36e4089ad71a70002f98c0, type: 3}
+  id: SlimeMonster
+  health: 8
+  damage: 3
+  prefab: {fileID: 3695324431331060042, guid: 55301d25823024ebfbfe6ed73ba8065e, type: 3}
   itemsRequired:
-  - {fileID: 11400000, guid: feddcbc701a684f7fade6ef787d60c03, type: 2}
-  - {fileID: 11400000, guid: 1a37ee91abe48466b9c85a1e25d0ce4b, type: 2}
-  itemsProduced:
-  - {fileID: 11400000, guid: d822ea9ec744b44bbb5f14399fe6c128, type: 2}
+  - {fileID: 11400000, guid: 9fcf67c8a4dfe4013bbc166a756a9141, type: 2}
+  - {fileID: 11400000, guid: 6b307d622e02349f698c7ccfd2508c49, type: 2}
+  itemsProduced: []
   dialogsBeforeFight: []
   dialogsAfterFight: []
