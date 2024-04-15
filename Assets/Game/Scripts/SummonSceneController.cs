@@ -63,7 +63,7 @@ public class SummonSceneController : MonoBehaviour
             }
         }
 
-        // selectedMonster = _availableMonsters[3];
+        // selectedMonster = _availableMonsters[4];
 
         _ingredientsPanelController.DepleteSelectedIngredients();
 
