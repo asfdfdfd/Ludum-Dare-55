@@ -21,6 +21,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6b307d622e02349f698c7ccfd2508c49, type: 2}
   itemsProduced: []
   dialogsBeforeFight:
-  - he slime silently puffs up, not intending to return the girl
+  - The slime silently puffs up, not intending to return the girl
   dialogsAfterFight:
   - happy end
