@@ -17,7 +17,7 @@ MonoBehaviour:
   damage: 3
   prefab: {fileID: 3695324431331060042, guid: 55301d25823024ebfbfe6ed73ba8065e, type: 3}
   itemsRequired:
-  - {fileID: 11400000, guid: 9fcf67c8a4dfe4013bbc166a756a9141, type: 2}
+  - {fileID: 11400000, guid: d822ea9ec744b44bbb5f14399fe6c128, type: 2}
   - {fileID: 11400000, guid: 6b307d622e02349f698c7ccfd2508c49, type: 2}
   itemsProduced: []
   dialogsBeforeFight: []
