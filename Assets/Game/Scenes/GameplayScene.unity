@@ -8524,12 +8524,11 @@ MonoBehaviour:
   ingredientItemsStorageController: {fileID: 1646055482}
   summonSceneController: {fileID: 58250148}
   ingredientsTier1:
-  - {fileID: 11400000, guid: 1a37ee91abe48466b9c85a1e25d0ce4b, type: 2}
-  ingredientsTier2:
   - {fileID: 11400000, guid: 0418140d4b06c4cd1bea097bf6e3b771, type: 2}
-  - {fileID: 11400000, guid: d822ea9ec744b44bbb5f14399fe6c128, type: 2}
-  ingredientsTier3:
+  ingredientsTier2:
   - {fileID: 11400000, guid: 9fcf67c8a4dfe4013bbc166a756a9141, type: 2}
+  ingredientsTier3:
+  - {fileID: 11400000, guid: d822ea9ec744b44bbb5f14399fe6c128, type: 2}
   - {fileID: 11400000, guid: 6b307d622e02349f698c7ccfd2508c49, type: 2}
   orderIconPrefab: {fileID: 1128014609082799173, guid: 2ac8786dd452b4bf883934673fa1434e,
     type: 3}
