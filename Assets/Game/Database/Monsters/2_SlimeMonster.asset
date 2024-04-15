@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80dead697cdf44941a89d160fa662f7d, type: 3}
-  m_Name: 4_Monster
+  m_Name: 2_SlimeMonster
   m_EditorClassIdentifier: 
-  id: 4_Monster
-  health: 12
-  damage: 4
+  id: SlimeMonster
+  health: 6
+  damage: 2
   itemsRequired:
   - {fileID: 11400000, guid: 1a37ee91abe48466b9c85a1e25d0ce4b, type: 2}
-  - {fileID: 11400000, guid: 0418140d4b06c4cd1bea097bf6e3b771, type: 2}
   itemsProduced:
-  - {fileID: 11400000, guid: 9fcf67c8a4dfe4013bbc166a756a9141, type: 2}
+  - {fileID: 11400000, guid: 0418140d4b06c4cd1bea097bf6e3b771, type: 2}
   dialogsBeforeFight: []
   dialogsAfterFight: []

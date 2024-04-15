@@ -8,6 +8,7 @@ public class MonsterScriptableObject : ScriptableObject
     public string id;
     public int health;
     public int damage;
+    public GameObject prefab;
     public List<IngredientItemScriptableObject> itemsRequired;
     public List<IngredientItemScriptableObject> itemsProduced;
     public List<string> dialogsBeforeFight;

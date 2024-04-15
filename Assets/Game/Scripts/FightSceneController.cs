@@ -10,17 +10,6 @@ using UnityEngine.UI;
 
 public class FightSceneController : MonoBehaviour
 {
-    enum FightStateItem
-    {
-        Idle,
-        PrepareAttack,
-        Attack,
-        Defend,
-        Stunned,
-        Heal,
-        Talk
-    }
-
     [SerializeField]
     private float actionCooldown;
 
@@ -60,13 +49,18 @@ public class FightSceneController : MonoBehaviour
     [SerializeField]
     private DialogController dialogController;
 
+    [SerializeField]
+    private GameObject monsterSpawnPoint;
+
     private readonly List<GameObject> _fightControlButtonsGameObjectsList = new();
 
     private List<Button> _fightControlButtonsList = new();
 
     private MonsterScriptableObject _activeMonster;
 
-    private int _activeMonsterHealth;
+    private GameObject _activeMonsterGameObject;
+
+    private MonsterControllerBase _monsterController;
 
     private FightStateItem _playerFightState;
 
@@ -153,103 +147,28 @@ public class FightSceneController : MonoBehaviour
 
     private void HandleMonsterState()
     {
-        _monsterHealthPanelController.SetHealth(_activeMonsterHealth);
-        monsterStateText.SetText(_monsterFightState.ToShortString());
-
-        if (_monsterFightState == FightStateItem.Idle)
-        {
-            _monsterAwaitNextAttackTimer -= Time.deltaTime;
-
-            if (_monsterAwaitNextAttackTimer <= 0)
-            {
-                _monsterFightState = FightStateItem.PrepareAttack;
-                _monsterPrepareAttackTimer = _monsterPrepareAttackTime;
-            }
-        }
-        else if (_monsterFightState == FightStateItem.PrepareAttack)
-        {
-            _monsterPrepareAttackTimer -= Time.deltaTime;
-
-            if (_monsterPrepareAttackTimer <= 0)
-            {
-                if (_playerFightState == FightStateItem.Defend)
-                {
-                    _monsterFightState = FightStateItem.Stunned;
-                    _monsterStunnedTimer = _monsterStunnedTime;                    
-                }
-                else
-                {
-                    _monsterFightState = FightStateItem.Attack;
-                    _monsterAttackTimer = _monsterAttackTime;
-                }
-            }    
-        }
-        else if (_monsterFightState == FightStateItem.Attack)
-        {
-            _monsterAttackTimer -= Time.deltaTime;
-
-            if (_monsterAttackTimer <= 0)
-            {
-                _playerController.Damage(_activeMonster.damage);
-
-                if (_playerController.Health == 0)
-                {
-                    MoveToSummonScene();
-                    return;
-                }
-
-                _monsterFightState = FightStateItem.Idle;
-                _monsterAwaitNextAttackTimer = _monsterAwaitNextAttackTime;
-            }
-        }
-        else if (_monsterFightState == FightStateItem.Defend)
-        {
-            _monsterDefendTimer -= Time.deltaTime;
-
-            if (_monsterDefendTimer <= 0)
-            {
-                _monsterFightState = FightStateItem.Idle;
-            }
-        }
-        else if (_monsterFightState == FightStateItem.Stunned)
-        {
-            _monsterStunnedTimer -= Time.deltaTime;
-
-            if (_monsterStunnedTimer <= 0)
-            {
-                _monsterFightState = FightStateItem.Idle; 
-                _monsterAwaitNextAttackTimer = _monsterAwaitNextAttackTime;
-            }
-        }
+        _monsterHealthPanelController.SetHealth(_monsterController.Health);
     }
 
     public void OnAttackButtonClick()
     {
-        if (_monsterFightState == FightStateItem.Idle)
-        {
-            _monsterFightState = FightStateItem.Defend;
-            _monsterDefendTimer = _monsterDefendTime;
-        }
-        else if (_playerFightState == FightStateItem.Idle)
+        if (_playerFightState == FightStateItem.Idle)
         {
             _playerFightState = FightStateItem.Attack;
             _playerAttackTimer = _playerAttackTime;
 
-            if (_monsterFightState == FightStateItem.Stunned || _monsterFightState == FightStateItem.PrepareAttack)            
+            _monsterController.Damage(_playerController.AttackPower);
+
+            if (_monsterController.Health <= 0) 
             {
-                _activeMonsterHealth -= _playerController.AttackPower;
-
-                if (_activeMonsterHealth <= 0) 
+                foreach (var item in _activeMonster.itemsProduced)
                 {
-                    foreach (var item in _activeMonster.itemsProduced)
-                    {
-                        _ingredientsItemsStorageController.AddItem(item.id);
-                    }
-                    
-                    _isFightReallyStarted = false;
-
-                    StartCoroutine(OnPlayerWinCoroutine());
+                    _ingredientsItemsStorageController.AddItem(item.id);
                 }
+                
+                _isFightReallyStarted = false;
+
+                StartCoroutine(OnPlayerWinCoroutine());
             }
         }
     }
@@ -288,7 +207,9 @@ public class FightSceneController : MonoBehaviour
         gameObjectSummon.SetActive(true);
 
         _activeMonster = null;
-        _activeMonsterHealth = 0;
+
+        Destroy(_activeMonsterGameObject);
+        _activeMonsterGameObject = null;
 
         _playerController.ResetHealth();
     }
@@ -316,12 +237,45 @@ public class FightSceneController : MonoBehaviour
     private void SetActiveMonster(MonsterScriptableObject monsterScriptableObject)
     {
         _activeMonster = monsterScriptableObject;
-        _activeMonsterHealth = _activeMonster.health;
 
-        _monsterHealthPanelController.SetHealth(_activeMonsterHealth);
+        _activeMonsterGameObject = Instantiate(_activeMonster.prefab, monsterSpawnPoint.transform);
+        _monsterController = _activeMonsterGameObject.GetComponent<MonsterControllerBase>();
+        _monsterController.Setup(_activeMonster.health);
+
+        _monsterController.onFightStateChanged.AddListener((fightState) => 
+        {
+            monsterStateText.SetText(fightState.ToShortString());
+
+            if (fightState == FightStateItem.Attack)
+            {
+                if (_playerFightState == FightStateItem.Defend)
+                {
+                    _monsterController.Stun();
+                }
+                else
+                {
+                    DamagePlayer();
+                }
+            }
+        });
+
+        monsterStateText.SetText(_monsterController.FightState.ToShortString());
+
+        _monsterHealthPanelController.SetHealth(_monsterController.Health);
 
         _monsterFightState = FightStateItem.Idle;
 
         _monsterAwaitNextAttackTimer = _monsterAwaitNextAttackTime;
+    }
+
+    private void DamagePlayer()
+    {
+        _playerController.Damage(_activeMonster.damage);
+
+        if (_playerController.Health == 0)
+        {
+            MoveToSummonScene();
+            return;
+        }        
     }
 }
