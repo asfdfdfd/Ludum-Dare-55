@@ -20,5 +20,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0418140d4b06c4cd1bea097bf6e3b771, type: 2}
   itemsProduced:
   - {fileID: 11400000, guid: 9fcf67c8a4dfe4013bbc166a756a9141, type: 2}
-  dialogsBeforeFight: []
-  dialogsAfterFight: []
+  dialogsBeforeFight:
+  - looks like... looks like... The eyes are exactly like yours, and the hair is
+    probably like her mother's
+  dialogsAfterFight:
+  - Your daughter. This. We have she there.

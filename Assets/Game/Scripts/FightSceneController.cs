@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FightSceneController : MonoBehaviour
@@ -51,6 +52,9 @@ public class FightSceneController : MonoBehaviour
 
     [SerializeField]
     private GameObject monsterSpawnPoint;
+
+    [SerializeField]
+    private GameObject gameObjectFightLose;
 
     [SerializeField]
     private Jukebox jukebox;
@@ -187,6 +191,13 @@ public class FightSceneController : MonoBehaviour
 
     private void MoveToSummonScene()
     {
+        if (_activeMonster.id == "SlimeMonster")
+        {
+            SceneManager.LoadScene("Game/Scenes/FinishScene");
+            
+            return;
+        }
+
         _isFightReallyStarted = false;
 
         jukebox.PlaySummonMusic();
@@ -201,6 +212,21 @@ public class FightSceneController : MonoBehaviour
 
         _playerController.ResetHealth();
     }
+
+    private void MoveToGameLoseScene()
+    {
+        _isFightReallyStarted = false;
+
+        gameObjectFight.SetActive(false);
+        gameObjectFightLose.SetActive(true);
+
+        _activeMonster = null;
+
+        Destroy(_activeMonsterGameObject);
+        _activeMonsterGameObject = null;
+
+        _playerController.ResetHealth();
+    }    
 
     public void StartNewFight(MonsterScriptableObject monsterScriptableObject)
     {
@@ -260,7 +286,7 @@ public class FightSceneController : MonoBehaviour
 
         if (_playerController.Health == 0)
         {
-            MoveToSummonScene();
+            MoveToGameLoseScene();
             return;
         }        
     }

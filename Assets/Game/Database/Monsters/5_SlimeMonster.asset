@@ -20,5 +20,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d822ea9ec744b44bbb5f14399fe6c128, type: 2}
   - {fileID: 11400000, guid: 6b307d622e02349f698c7ccfd2508c49, type: 2}
   itemsProduced: []
-  dialogsBeforeFight: []
-  dialogsAfterFight: []
+  dialogsBeforeFight:
+  - he slime silently puffs up, not intending to return the girl
+  dialogsAfterFight:
+  - happy end

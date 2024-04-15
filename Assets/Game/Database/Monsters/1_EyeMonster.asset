@@ -21,6 +21,6 @@ MonoBehaviour:
   itemsProduced:
   - {fileID: 11400000, guid: 0418140d4b06c4cd1bea097bf6e3b771, type: 2}
   dialogsBeforeFight:
-  - Test dialog before fight
+  - The Monster Eye looks around, focusing on the picture of a house and empty bottles
   dialogsAfterFight:
-  - Test dialog after fight
+  - The Monster Eye seemed to recognize the Summoner and disappeared
