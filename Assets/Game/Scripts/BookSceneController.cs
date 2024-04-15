@@ -32,24 +32,37 @@ public class BookSceneController : MonoBehaviour
         gameObjectBook.SetActive(false);
     }
 
-    public void ShowPanel1() 
+    public void ShowNext() 
     {
-        gameObjectPanel1.SetActive(true);
-        gameObjectPanel2.SetActive(false);
-        gameObjectPanel3.SetActive(false);
+        panelIndex++;
+
+        if (panelIndex == panels.Count)
+        {
+            panelIndex = 0;
+        }
+
+        foreach(GameObject gob in panels)
+        {
+            gob.SetActive(false);
+        }
+
+        panels[panelIndex].SetActive(true);
     }
 
-    public void ShowPanel2() 
+    public void ShowPrev() 
     {
-        gameObjectPanel1.SetActive(false);
-        gameObjectPanel2.SetActive(true);
-        gameObjectPanel3.SetActive(false);        
+        panelIndex--;
+
+        if (panelIndex < 0)
+        {
+            panelIndex = panels.Count - 1;
+        }
+
+        foreach(GameObject gob in panels)
+        {
+            gob.SetActive(false);
+        }
+
+        panels[panelIndex].SetActive(true);     
     }    
-
-    public void ShowPanel3() 
-    {
-        gameObjectPanel1.SetActive(false);
-        gameObjectPanel2.SetActive(false);
-        gameObjectPanel3.SetActive(true);        
-    }
 }
