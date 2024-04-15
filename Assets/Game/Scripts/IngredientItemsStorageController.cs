@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Search;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class IngredientItemsStorageController : MonoBehaviour
@@ -19,7 +21,31 @@ public class IngredientItemsStorageController : MonoBehaviour
     private void Awake()
     {
         _itemsDict[firstIngredientItem.id] = int.MaxValue;
-        _itemsList.Add(firstIngredientItem.id);
+        _itemsList.Add(firstIngredientItem.id);              
+    }
+
+    private void Update()
+    {
+        if (Application.isEditor)        
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                _itemsDict["IngredientItem1"] = 10;
+                _itemsList.Add("IngredientItem1");
+
+                _itemsDict["IngredientItem2"] = 10;
+                _itemsList.Add("IngredientItem2");
+                
+                _itemsDict["IngredientItem3"] = 10;
+                _itemsList.Add("IngredientItem3");        
+
+                _itemsDict["IngredientItem4"] = 10;
+                _itemsList.Add("IngredientItem4");        
+
+                _itemsDict["IngredientItem5"] = 10;
+                _itemsList.Add("IngredientItem5");  
+            }
+        }
     }
 
     public List<string> Items
@@ -49,6 +75,11 @@ public class IngredientItemsStorageController : MonoBehaviour
 
     public void RemoveItem(string id)
     {
+        RemoveItem(id, 1);
+    }
+
+    internal void RemoveItem(string id, int amount)
+    {
         if (id == firstIngredientItem.id)
         {
             return;
@@ -56,15 +87,32 @@ public class IngredientItemsStorageController : MonoBehaviour
 
         if (_itemsDict.ContainsKey(id))
         {
-            _itemsDict[id] = _itemsDict[id] - 1;
+            _itemsDict[id] = _itemsDict[id] - amount;
 
-            if (_itemsDict[id] == 0)
+            if (_itemsDict[id] <= 0)
             {
+                if (_itemsDict[id] < 0)
+                {
+                    Debug.LogWarning("Amount of item after remove is negative!");                    
+                }
+                
                 _itemsDict.Remove(id);
                 _itemsList.Remove(id);
             }
 
             onItemsUpdated?.Invoke();
+        }
+    }    
+
+    internal int GetItemCount(string id)
+    {
+        if (_itemsDict.ContainsKey(id))
+        {
+            return _itemsDict[id];
+        }
+        else
+        {
+            return 0;
         }
     }
 }

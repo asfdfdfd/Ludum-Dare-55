@@ -1,6 +1,7 @@
-using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SummonSceneController : MonoBehaviour
 {
@@ -25,6 +26,15 @@ public class SummonSceneController : MonoBehaviour
     [SerializeField] 
     private List<MonsterScriptableObject> _availableMonsters;
 
+    [SerializeField]
+    private IngredientsPanelController _ingredientsPanelController;
+
+    [SerializeField]
+    private UnityEvent<MonsterScriptableObject> onMonsterSummoned;
+
+    [SerializeField]
+    private PlayerController playerController;
+
     
     public void OnOpenShopButtonClick()
     {
@@ -38,9 +48,31 @@ public class SummonSceneController : MonoBehaviour
 
     public void OnSummonButtonClick()
     {
-        gameObjectSummon.SetActive(false);
-        gameObjectFight.SetActive(true);
+        MonsterScriptableObject selectedMonster = null;
+        foreach(MonsterScriptableObject monster in _availableMonsters)
+        {
+            List<IngredientItemScriptableObject> itemsRequired = monster.itemsRequired;
+            HashSet<string> itemsRequiredSet = new HashSet<string>(itemsRequired.Select(ingredient => ingredient.id));
 
-        fightSceneController.StartNewFight(_availableMonsters[0]);
+            if (itemsRequiredSet.SetEquals(_ingredientsPanelController.SelectedIngredients))
+            {
+                selectedMonster = monster;
+                break;
+            }
+        }
+
+        _ingredientsPanelController.DepleteSelectedIngredients();
+
+        if (selectedMonster != null)
+        {
+            playerController.ResetHealth();
+
+            onMonsterSummoned.Invoke(selectedMonster);
+            
+            gameObjectSummon.SetActive(false);
+            gameObjectFight.SetActive(true);
+
+            fightSceneController.StartNewFight(_availableMonsters[0]);
+        }
     }
 }

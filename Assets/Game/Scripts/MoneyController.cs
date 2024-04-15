@@ -20,4 +20,15 @@ public class MoneyController : MonoBehaviour
     {
         _money -= value;
     }    
+
+    private void Update()
+    {
+        if (Application.isEditor)
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                _money += 999999;
+            }
+        }
+    }
 }

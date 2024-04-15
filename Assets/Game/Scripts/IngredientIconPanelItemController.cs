@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class IngredientIconPanelItemController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private TextMeshProUGUI amountText;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField]
+    public Toggle toggle;
+
+    public void SetAmount(int amount)
     {
-        
+        if (amount == int.MaxValue)
+        {
+            amountText.SetText("∞");
+        }
+        else
+        {
+            amountText.SetText(amount.ToString());
+        }
     }
 }

@@ -6,4 +6,5 @@ public class IngredientItemScriptableObject : ScriptableObject
 {
     public string id;
     public Sprite icon;
+    public int price;
 }
