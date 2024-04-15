@@ -60,6 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountText: {fileID: 3398124909603767616}
   toggle: {fileID: 5700339856512317261}
+  image: {fileID: 6365543936337620466}
 --- !u!1 &4305593845449715258
 GameObject:
   m_ObjectHideFlags: 0

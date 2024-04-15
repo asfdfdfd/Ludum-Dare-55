@@ -8,8 +8,6 @@ public class MonsterAnimatedAnimationEventsController : MonoBehaviour
     public UnityEvent onIdleStarted;
     public UnityEvent onAttackStarted;
     public UnityEvent onAttackFinished;
-    public UnityEvent onDefendStarted;
-    public UnityEvent onDefendFinished;
 
     public void OnIdleStarted()
     {
@@ -24,15 +22,5 @@ public class MonsterAnimatedAnimationEventsController : MonoBehaviour
     public void OnAttackFinished()
     {
         onAttackFinished.Invoke();
-    }    
-
-    public void OnDefendStarted()
-    {
-        onDefendStarted.Invoke();
-    }
-
-    public void OnDefendFinished()
-    {
-        onDefendFinished.Invoke();
     }
 }

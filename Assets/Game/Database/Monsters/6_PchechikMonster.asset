@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: 6_PchechikMonster
   m_EditorClassIdentifier: 
   id: PchechikMonster
-  health: 24
-  damage: 8
+  health: 8
+  damage: 3
+  prefab: {fileID: 1914876643847328865, guid: c22743a6ec36e4089ad71a70002f98c0, type: 3}
   itemsRequired:
   - {fileID: 11400000, guid: 1a37ee91abe48466b9c85a1e25d0ce4b, type: 2}
   - {fileID: 11400000, guid: 9fcf67c8a4dfe4013bbc166a756a9141, type: 2}

@@ -11,6 +11,9 @@ public class IngredientIconPanelItemController : MonoBehaviour
     [SerializeField]
     public Toggle toggle;
 
+    [SerializeField]
+    private Image image;
+
     public void SetAmount(int amount)
     {
         if (amount == int.MaxValue)
@@ -21,5 +24,10 @@ public class IngredientIconPanelItemController : MonoBehaviour
         {
             amountText.SetText(amount.ToString());
         }
+    }
+
+    public void SetSprite(Sprite sprite)
+    {
+        image.sprite = sprite;
     }
 }

@@ -35,7 +35,9 @@ public class SummonSceneController : MonoBehaviour
     [SerializeField]
     private PlayerController playerController;
 
-    
+    [SerializeField]
+    private Jukebox jukebox;
+
     public void OnOpenShopButtonClick()
     {
         gameObjectShop.SetActive(true);
@@ -72,7 +74,9 @@ public class SummonSceneController : MonoBehaviour
             gameObjectSummon.SetActive(false);
             gameObjectFight.SetActive(true);
 
-            fightSceneController.StartNewFight(_availableMonsters[0]);
+            jukebox.PlayFightMusic();
+
+            fightSceneController.StartNewFight(selectedMonster);
         }
     }
 }

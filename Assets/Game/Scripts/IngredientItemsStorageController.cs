@@ -12,6 +12,11 @@ public class IngredientItemsStorageController : MonoBehaviour
 
     private readonly List<string> _itemsList = new();
 
+    [SerializeField]
+    private List<IngredientItemScriptableObject> _ingredientsAll;
+
+    private readonly Dictionary<string, IngredientItemScriptableObject>  _ingredientsAllDict = new();
+
     public UnityEvent onItemsUpdated;
 
     // First item is a special item — it has infinite amount.
@@ -21,7 +26,12 @@ public class IngredientItemsStorageController : MonoBehaviour
     private void Awake()
     {
         _itemsDict[firstIngredientItem.id] = int.MaxValue;
-        _itemsList.Add(firstIngredientItem.id);              
+        _itemsList.Add(firstIngredientItem.id);     
+
+        foreach (IngredientItemScriptableObject item in _ingredientsAll)
+        {
+            _ingredientsAllDict[item.id] = item;
+        }
     }
 
     private void Update()
@@ -114,5 +124,10 @@ public class IngredientItemsStorageController : MonoBehaviour
         {
             return 0;
         }
+    }
+
+    internal Sprite GetSprite(string id)
+    {
+        return _ingredientsAllDict[id].icon;
     }
 }

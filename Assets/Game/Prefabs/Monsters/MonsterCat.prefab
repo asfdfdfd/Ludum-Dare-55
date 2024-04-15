@@ -45,22 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78876386ef0046019f715d89d935b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onIdleStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  onAttackPrepareStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  onAttackStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  onAttackFinished:
-    m_PersistentCalls:
-      m_Calls: []
-  onDefendStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  onDefendFinished:
+  onFightStateChanged:
     m_PersistentCalls:
       m_Calls: []
   _animator: {fileID: 7736840302437195167}
@@ -1977,7 +1962,7 @@ Animator:
   m_GameObject: {fileID: 498436446034124206}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a1a5a607c3a394747a7f1fffa1cb222b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 92c4fdbdc04354e92b7b14c6c5979b1a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2002,22 +1987,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onIdleStarted:
     m_PersistentCalls:
-      m_Calls: []
-  onAttackPrepareStarted:
-    m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8927873525994083445}
+        m_TargetAssemblyTypeName: MonsterControllerBase, Assembly-CSharp
+        m_MethodName: OnIdleStarted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAttackStarted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8927873525994083445}
+        m_TargetAssemblyTypeName: MonsterControllerBase, Assembly-CSharp
+        m_MethodName: OnAttackStarted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAttackFinished:
     m_PersistentCalls:
-      m_Calls: []
-  onDefendStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  onDefendFinished:
-    m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8927873525994083445}
+        m_TargetAssemblyTypeName: MonsterControllerBase, Assembly-CSharp
+        m_MethodName: OnAttackFinished
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &982099050617145108 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4c233ff23345148639049bea903b455c,

@@ -117,6 +117,7 @@ public class IngredientsPanelController : MonoBehaviour
             var id = _ingredientItemsStorageController.Items[i];
             var ingredientIconPanelItemController = ingredientIconPanelItem.GetComponent<IngredientIconPanelItemController>();
             ingredientIconPanelItemController.SetAmount(_ingredientItemsStorageController.GetItemCount(id));            
+            ingredientIconPanelItemController.SetSprite(_ingredientItemsStorageController.GetSprite(id));
             ingredientIconPanelItemController.toggle.isOn = _selectedIngredients.Contains(id);
             ingredientIconPanelItemController.toggle.onValueChanged.AddListener((isSelected) => {
                 if (isSelected)

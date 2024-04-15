@@ -3,8 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuSceneController : MonoBehaviour
 {
-    public void OnStartGameButtonPressed()
+    private void Update()
     {
-        SceneManager.LoadScene("Game/Scenes/GameplayScene");
+        if (Input.GetMouseButtonDown(0))
+        {
+            SceneManager.LoadScene("Game/Scenes/GameplayScene");
+        }
     }
 }

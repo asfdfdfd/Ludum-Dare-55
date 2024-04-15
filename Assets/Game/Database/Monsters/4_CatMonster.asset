@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 4_CatMonster
   m_EditorClassIdentifier: 
   id: CatMonster
-  health: 12
-  damage: 4
+  health: 6
+  damage: 2
   prefab: {fileID: 7872046491579078236, guid: 096b7091b01674dd18aedaeaa40bbf27, type: 3}
   itemsRequired:
   - {fileID: 11400000, guid: 1a37ee91abe48466b9c85a1e25d0ce4b, type: 2}

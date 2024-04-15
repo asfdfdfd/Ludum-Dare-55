@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 5_RobotMonster
   m_EditorClassIdentifier: 
   id: RobotMonster
-  health: 12
-  damage: 4
+  health: 6
+  damage: 2
   prefab: {fileID: 4857152107513245841, guid: 12eec4c7f0f9847f3bce3424dede7ed5, type: 3}
   itemsRequired:
   - {fileID: 11400000, guid: 0418140d4b06c4cd1bea097bf6e3b771, type: 2}

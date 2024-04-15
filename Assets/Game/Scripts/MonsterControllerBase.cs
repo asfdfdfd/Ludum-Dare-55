@@ -31,9 +31,16 @@ public abstract class MonsterControllerBase : MonoBehaviour
     private readonly float _monsterIdleTime = 3.0f;
     private float _monsterIdleTimer = 0.0f;
 
+    private bool _isReallyStarted = false;
+
     public void Setup(int health)
     {
         _health = health;
+    }
+
+    public void ReallyStart()
+    {
+        _isReallyStarted = true;
     }
 
     private void SetState(FightStateItem fightState)
@@ -74,6 +81,11 @@ public abstract class MonsterControllerBase : MonoBehaviour
 
     protected void Update()
     {
+        if (!_isReallyStarted)
+        {
+            return;
+        }
+
         if (_fightState == FightStateItem.Idle)
         {
             _monsterIdleTimer -= Time.deltaTime;

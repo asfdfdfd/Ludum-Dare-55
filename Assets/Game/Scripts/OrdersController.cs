@@ -79,6 +79,7 @@ public class OrdersController : MonoBehaviour
 
                 OrderIngredientPanelItemController controller = ingredientIconPrefab.GetComponent<OrderIngredientPanelItemController>();
                 controller.SetAmount(_activeOrder.amountOfIngredients[i]);
+                controller.SetIcon(ingredient.icon);
             }
         }
     }

@@ -64,24 +64,7 @@ public class FightSceneController : MonoBehaviour
 
     private FightStateItem _playerFightState;
 
-    private FightStateItem _monsterFightState;
-
     private bool _isFightReallyStarted = false;
-
-    private readonly float _monsterAwaitNextAttackTime = 3.0f;
-    private float _monsterAwaitNextAttackTimer;
-
-    private readonly float _monsterPrepareAttackTime = 1.0f;
-    private float _monsterPrepareAttackTimer;
-
-    private readonly float _monsterAttackTime = 1.0f;
-    private float _monsterAttackTimer;    
-
-    private readonly float _monsterDefendTime = 1.0f;
-    private float _monsterDefendTimer; 
-
-    private readonly float _monsterStunnedTime = 3.0f;
-    private float _monsterStunnedTimer;        
 
     private readonly float _playerAttackTime = 1.0f;
     private float _playerAttackTimer;       
@@ -232,6 +215,8 @@ public class FightSceneController : MonoBehaviour
         yield return dialogController.ShowDialogBeforeFight(_activeMonster.id);
 
         _isFightReallyStarted = true;
+
+        _monsterController.ReallyStart();
     }
 
     private void SetActiveMonster(MonsterScriptableObject monsterScriptableObject)
@@ -262,10 +247,6 @@ public class FightSceneController : MonoBehaviour
         monsterStateText.SetText(_monsterController.FightState.ToShortString());
 
         _monsterHealthPanelController.SetHealth(_monsterController.Health);
-
-        _monsterFightState = FightStateItem.Idle;
-
-        _monsterAwaitNextAttackTimer = _monsterAwaitNextAttackTime;
     }
 
     private void DamagePlayer()

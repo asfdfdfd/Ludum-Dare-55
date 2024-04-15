@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: IngredientItem1
   m_EditorClassIdentifier: 
   id: IngredientItem1
-  icon: {fileID: 21300000, guid: 5f10b710833f449a2b265a370502a3ee, type: 3}
+  icon: {fileID: 21300000, guid: 467d1168dfe0d49c2a3409d20c5f4194, type: 3}
   price: 10
