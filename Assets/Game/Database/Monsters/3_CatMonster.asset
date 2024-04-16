@@ -17,6 +17,7 @@ MonoBehaviour:
   damage: 2
   prefab: {fileID: 7872046491579078236, guid: 096b7091b01674dd18aedaeaa40bbf27, type: 3}
   itemsRequired:
+  - {fileID: 11400000, guid: feddcbc701a684f7fade6ef787d60c03, type: 2}
   - {fileID: 11400000, guid: 9fcf67c8a4dfe4013bbc166a756a9141, type: 2}
   itemsProduced:
   - {fileID: 11400000, guid: d822ea9ec744b44bbb5f14399fe6c128, type: 2}
