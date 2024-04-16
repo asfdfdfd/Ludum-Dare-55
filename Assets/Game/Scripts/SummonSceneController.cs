@@ -45,6 +45,8 @@ public class SummonSceneController : MonoBehaviour
 
     public void OnOpenBookButtonClick()
     {
+        jukebox.PlaySoundBookOpen();
+
         gameObjectBook.SetActive(true);
     }    
 
@@ -63,12 +65,14 @@ public class SummonSceneController : MonoBehaviour
             }
         }
 
-        selectedMonster = _availableMonsters[3];
+        // selectedMonster = _availableMonsters[3];
 
         _ingredientsPanelController.DepleteSelectedIngredients();
 
         if (selectedMonster != null)
         {
+            jukebox.PlaySummoningPositive();
+
             playerController.ResetHealth();
 
             onMonsterSummoned.Invoke(selectedMonster);
@@ -79,6 +83,10 @@ public class SummonSceneController : MonoBehaviour
             jukebox.PlayFightMusic();
 
             fightSceneController.StartNewFight(selectedMonster);
+        }
+        else
+        {
+            jukebox.PlaySummoningNegative();
         }
     }
 }

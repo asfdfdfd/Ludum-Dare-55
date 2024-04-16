@@ -1,11 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuSceneController : MonoBehaviour
+public class InstructionsScene : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject gameObjectImage0;
-
     [SerializeField]
     private GameObject gameObjectImage1;
 
@@ -25,23 +24,18 @@ public class MainMenuSceneController : MonoBehaviour
 
             if (currentIndex == 1)
             {
-                gameObjectImage0.SetActive(false);
-                gameObjectImage1.SetActive(true);
+                gameObjectImage1.SetActive(false);
+                gameObjectImage2.SetActive(true);
             } 
             else if (currentIndex == 2)
             {
-                gameObjectImage1.SetActive(false);
-                gameObjectImage2.SetActive(true);
-            }
-            else if (currentIndex == 3)
-            {
                 gameObjectImage2.SetActive(false);
                 gameObjectImage3.SetActive(true);
-            }            
-            else if (currentIndex == 4)
+            }
+            else if (currentIndex == 3)
             {
                 SceneManager.LoadScene("Game/Scenes/GameplayScene");
             }
         }
-    }
+    }     
 }

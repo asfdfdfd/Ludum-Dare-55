@@ -147,7 +147,14 @@ public class FightSceneController : MonoBehaviour
             _playerFightState = FightStateItem.Attack;
             _playerAttackTimer = _playerAttackTime;
 
-            _monsterController.Damage(_playerController.AttackPower);
+            if (_monsterController.Damage(_playerController.AttackPower))
+            {
+                jukebox.PlayKickPlayer();
+            }
+            else
+            {
+                jukebox.PlayKickShieldPlayer();
+            }
 
             if (_monsterController.Health <= 0) 
             {
@@ -200,6 +207,8 @@ public class FightSceneController : MonoBehaviour
 
         _isFightReallyStarted = false;
 
+        jukebox.PlayWinMusic();
+
         jukebox.PlaySummonMusic();
 
         gameObjectFight.SetActive(false);
@@ -215,6 +224,8 @@ public class FightSceneController : MonoBehaviour
 
     private void MoveToGameLoseScene()
     {
+        jukebox.PlayLoseMusic();
+
         _isFightReallyStarted = false;
 
         gameObjectFight.SetActive(false);
@@ -266,10 +277,12 @@ public class FightSceneController : MonoBehaviour
             {
                 if (_playerFightState == FightStateItem.Defend)
                 {
+                    jukebox.PlayKickShieldEnemy();
                     _monsterController.Stun();
                 }
                 else
                 {
+                    jukebox.PlayKickEnemy();
                     DamagePlayer();
                 }
             }

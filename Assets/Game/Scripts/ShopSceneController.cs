@@ -27,6 +27,9 @@ public class ShopSceneController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI swordUpgradePriceText;
 
+    [SerializeField]
+    private Jukebox jukebox;
+
     private readonly List<int> _healthUpgrade = new List<int> { 5, 8 };
     private readonly List<int> _healthPrice = new List<int> { 400, 4000 };
 
@@ -69,6 +72,7 @@ public class ShopSceneController : MonoBehaviour
         moneyController.SpendMoney(_healthPrice[0]);
         _healthUpgrade.RemoveAt(0);
         _healthPrice.RemoveAt(0);
+        jukebox.PlayCoins();
     }
 
     public void UpgradeSword()
@@ -77,5 +81,6 @@ public class ShopSceneController : MonoBehaviour
         moneyController.SpendMoney(_attackUpgradePrice[0]);
         _attackUpgrade.RemoveAt(0);
         _attackUpgradePrice.RemoveAt(0);
+        jukebox.PlayCoins();
     }
 }

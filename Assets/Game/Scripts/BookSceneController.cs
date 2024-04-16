@@ -16,6 +16,9 @@ public class BookSceneController : MonoBehaviour
     [SerializeField]
     private GameObject gameObjectPanel3;    
 
+    [SerializeField]
+    private Jukebox jukebox;
+
     private int panelIndex = 0;
 
     private readonly List<GameObject> panels = new List<GameObject>();
@@ -34,6 +37,8 @@ public class BookSceneController : MonoBehaviour
 
     public void ShowNext() 
     {
+        jukebox.PlayBookSheets();
+
         panelIndex++;
 
         if (panelIndex == panels.Count)
@@ -51,6 +56,8 @@ public class BookSceneController : MonoBehaviour
 
     public void ShowPrev() 
     {
+        jukebox.PlayBookSheets();
+        
         panelIndex--;
 
         if (panelIndex < 0)

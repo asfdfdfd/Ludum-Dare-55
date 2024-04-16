@@ -39,15 +39,27 @@ public class OrdersController : MonoBehaviour
     [SerializeField]
     private MoneyController moneyController;
 
+    [SerializeField]
+    private Jukebox jukebox;
+
     private List<Order> _mandatoryOrders = new List<Order>();
 
     private Order _activeOrder;
 
     private void Awake()
     {
-        _mandatoryOrders.Add(new Order { ingredients = ingredientsTier1, amountOfIngredients = ingredientsTier1.Select(i => 1).ToList() });
-        _mandatoryOrders.Add(new Order { ingredients = ingredientsTier1, amountOfIngredients = ingredientsTier1.Select(i => 1).ToList() });
-        _mandatoryOrders.Add(new Order { ingredients = ingredientsTier2, amountOfIngredients = ingredientsTier2.Select(i => 2).ToList() });
+        _mandatoryOrders.Add(new Order { ingredients = ingredientsTier1, amountOfIngredients = ingredientsTier1.Select(i => 2).ToList() });
+        _mandatoryOrders.Add(new Order { ingredients = ingredientsTier1, amountOfIngredients = ingredientsTier1.Select(i => 2).ToList() });
+        _mandatoryOrders.Add(new Order { ingredients = ingredientsTier2, amountOfIngredients = ingredientsTier2.Select(i => 1).ToList() });
+        _mandatoryOrders.Add(new Order { ingredients = ingredientsTier2, amountOfIngredients = ingredientsTier2.Select(i => 1).ToList() });
+        _mandatoryOrders.Add(new Order { ingredients = ingredientsTier2, amountOfIngredients = ingredientsTier2.Select(i => 1).ToList() });
+        _mandatoryOrders.Add(new Order { ingredients = ingredientsTier2, amountOfIngredients = ingredientsTier2.Select(i => 1).ToList() });
+        _mandatoryOrders.Add(new Order { ingredients = ingredientsTier3, amountOfIngredients = ingredientsTier3.Select(i => 1).ToList() });
+        _mandatoryOrders.Add(new Order { ingredients = ingredientsTier3, amountOfIngredients = ingredientsTier3.Select(i => 1).ToList() });
+        _mandatoryOrders.Add(new Order { ingredients = ingredientsTier3, amountOfIngredients = ingredientsTier3.Select(i => 1).ToList() });
+        _mandatoryOrders.Add(new Order { ingredients = ingredientsTier3, amountOfIngredients = ingredientsTier3.Select(i => 1).ToList() });
+        _mandatoryOrders.Add(new Order { ingredients = ingredientsTier3, amountOfIngredients = ingredientsTier3.Select(i => 1).ToList() });
+        _mandatoryOrders.Add(new Order { ingredients = ingredientsTier3, amountOfIngredients = ingredientsTier3.Select(i => 1).ToList() });
 
         sellOrderButton.onClick.AddListener(() => SellOrder());
 
@@ -106,6 +118,11 @@ public class OrdersController : MonoBehaviour
         }
 
         moneyController.EarnMoney(amountOfMoney);
+
+        if (amountOfMoney > 0)
+        {
+            jukebox.PlayCoins();
+        }
 
         RemoveAllItemsFromPanel();
         

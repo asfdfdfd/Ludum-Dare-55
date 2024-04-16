@@ -101,7 +101,7 @@ public abstract class MonsterControllerBase : MonoBehaviour
         }
     }
 
-    public void Damage(int attackPower)
+    public bool Damage(int attackPower)
     {
         if (_fightState == FightStateItem.Idle)
         {
@@ -111,7 +111,9 @@ public abstract class MonsterControllerBase : MonoBehaviour
         else if (_fightState == FightStateItem.Stunned)
         {
             _health -= attackPower;
+            return true;
         }
+        return false;
     }
 
     public abstract void Attack();
